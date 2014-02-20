@@ -1,0 +1,10 @@
+{% extends 'blogeg/base.html' %}
+
+{% block content %}
+{% if blog_post_list %}
+	{% for post in blog_post_list%}
+	<h1><a href = "/{{post.id}}/">{{post.label}}</a></h1>
+	<p>{{post.content}}</p>
+	{% endfor %}
+{% endif %}
+{% endblock %}

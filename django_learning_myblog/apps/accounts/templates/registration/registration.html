@@ -1,0 +1,17 @@
+{% extends 'blogeg/base.html' %}
+
+{% block title %}Create your account{% endblock %}
+
+{% block content %}
+
+{% if form.errors %}
+<p><strong>{{ from.errors }}</strong></p>
+{% endif %}
+
+<form method="post" action="{% url 'registration' %}">
+{% csrf_token %}
+{{form.as_table}}
+<input type="submit" value="Create account" />
+</form>
+
+{% endblock %}

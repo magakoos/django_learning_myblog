@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css" />
+    <title>{% block title %}My amazing site{% endblock %}</title>
+</head>
+
+<body>
+    <div id="up_menu">
+        {% block menu %}
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/arhive/">Arhive</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'blogeg:account' %}">Account</a>
+            <li><a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+            <li><a href="{% url 'login' %}">Login</a>
+            {% endif %}
+        </ul>
+        {% endblock %}
+    </div>
+
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

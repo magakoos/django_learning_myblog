@@ -1,0 +1,28 @@
+{% extends 'blogeg/base.html' %}
+
+{% block title %} Arhive {% endblock %}
+
+
+{% block content %}
+
+{% if arhive %}
+<h1>Arhive</h1>
+{% for year, months in arhive.items %}
+<h2>{{ year }}:</h2>
+
+	{% for month, posts in months.items %}
+	<h3>{{ month }}: </h3> 
+
+	{% for post in posts %}
+		<a href = "{% url 'blogeg:post' post.id %}">
+			{{ post.label }} - {{ post.publication_date|date }}
+		</a>
+
+		{% endfor %}
+	{% endfor %}
+{% endfor %}
+{% else %}
+	<h1>Sorry =(</h1>
+	<p>We have not arhive notes</p>
+{% endif %}
+{% endblock %}

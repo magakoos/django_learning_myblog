@@ -1,0 +1,9 @@
+{% extends 'blogeg/base.html' %}
+
+{% block content %}
+
+<h1>{{ user }}</h1>
+
+<p><a href="{% url 'password_change' %}">Do you want to change password?</a></p>
+
+{% endblock %}

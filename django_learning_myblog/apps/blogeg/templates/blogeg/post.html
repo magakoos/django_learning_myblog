@@ -1,0 +1,41 @@
+{% extends 'blogeg/base.html' %}
+
+{% block title %}{{ post.label }} - {{ post.publication_date|date }}
+{% endblock %}
+
+
+
+{% block content %}
+{# Blog post #}
+<h1>{{ post.label }}</h1>
+
+<p>{{ post.content }}</p>
+
+<p>{{ post.publication_date|date }}</p>
+
+
+<h2> Comments </h2>
+{# Comment form #}
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action = "{% url 'blogeg:post' post.id %}" method = "post">
+{% csrf_token %}
+{{ form.as_p}}
+<input type = 'submit' value = 'Add comment'>
+</form>
+
+
+{# Comment list #}
+{% if comments %}
+{% for comment in comments %}
+<dl>
+	<dt>{{ comment.email }}</dt>
+	<dd>{{ comment.content }}</dd>
+</dl>
+{% endfor %}
+
+{% else %}
+<h2>We have no comments here. Be first =)</h2>
+{% endif %}
+{% endblock %}

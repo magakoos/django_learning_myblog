@@ -1,0 +1,21 @@
+{% extends "blogeg/base.html" %}
+
+{% block title %}Registration confirm{% endblock %}
+
+{% block content %}
+
+{% if validlink %}
+
+<h1>Registration confirm successful</h1>
+
+<p>Now you can <a href="{% url 'login' %}">log in</a>.</p>
+
+{% else %}
+
+<h1>Registration confirm unsuccessful</h1>
+
+<p>The registration link was invalid, possibly because it has already been used.  Please trying make a registration again.</p>
+
+{% endif %}
+
+{% endblock %}
